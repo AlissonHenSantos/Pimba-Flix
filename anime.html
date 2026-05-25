@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="Latin1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pimba Animes - Fullmetal Alchemist</title>
+    <link rel="icon" href="imagens/icone" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/pimbaAnimes.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" media="screen" />
+    <link href="//db.onlinewebfonts.com/c/ecc8f49ca2217d594cec3e5f66a8b73a?family=CocoSharpL-Regular" rel="stylesheet" type="text/css"/>
+
+    <style>
+        body {
+            background-image: url(imagens/background-image.png); 
+            box-shadow: inset 0px 4px 4px 1160px rgba(0, 0, 0, 0.75);
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            display: flex;
+            margin-top: 4.5rem; /* Space for fixed navbar */
+            height: 450px;
+            background-image: url('imagens/Carousel-Fullmetal-Alchemist-Brotherhood-1.webp.png');
+            background-size: cover;
+            background-position: center top;
+            position: relative;
+        }
+        
+        /* Gradient overlay for text readability */
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 70%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 6rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .hero-subtitle {
+            color: #ddd;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+        .btn-continuar {
+            background-color: #ff730f;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            width: fit-content;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 0 15px rgba(255, 115, 15, 0.5);
+            transition: transform 0.2s;
+        }
+        .btn-continuar:hover {
+            transform: scale(1.05);
+            color: #fff;
+        }
+        .hero-episodes {
+            color: #999;
+            font-size: 0.95rem;
+            margin-left: 5px;
+        }
+        
+        /* Middle Action Bar */
+        .action-bar {
+            padding: 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        .fav-btn {
+            color: #aaa;
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: color 0.2s;
+        }
+        .fav-btn:hover {
+            color: #ff730f;
+        }
+        .fav-btn i {
+            font-size: 1.8rem;
+        }
+        
+        .rating-box {
+            text-align: center;
+        }
+        .rating-box i {
+            font-size: 1.8rem;
+            color: transparent;
+            -webkit-text-stroke: 1px #fff; /* Empty stars */
+            margin: 0 2px;
+            cursor: pointer;
+        }
+        .rating-box i:hover, .rating-box i.filled {
+            color: #fff;
+        }
+        .rating-box p {
+            color: #666;
+            font-size: 0.75rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+        
+        .description {
+            color: #bbb;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,115,15,1) 0%, rgba(255,115,15,0) 100%);
+            margin-bottom: 3rem;
+        }
+        
+        /* Episodes Section */
+        .episodes-title {
+            color: #fff;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+        }
+        
+        .ep-list {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ep-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #333;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .ep-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+            text-decoration: none;
+        }
+        
+        .ep-img {
+            width: 140px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid #ff730f;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255, 115, 15, 0.3);
+        }
+        
+        .ep-number {
+            color: #ccc;
+            font-weight: bold;
+            font-size: 1rem;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+        
+        .ep-separator {
+            width: 1px;
+            height: 35px;
+            background-color: #555;
+        }
+        
+        .ep-title {
+            color: #aaa;
+            font-size: 1rem;
+            margin: 0;
+            transition: color 0.2s;
+        }
+        .ep-item:hover .ep-title {
+            color: #fff;
+        }
+        
+        /* Pagination overrides */
+        .paginar {
+            justify-content: flex-end;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+        .paginar div {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        .paginar div:hover {
+            color: #ff730f !important;
+        }
+        .paginar .num-ativo {
+            color: #fff !important;
+        }
+    </style>
+  </head>
+  <body class="fw-bold" style="font-family: sans-serif;">
+
+    <!-- Navbar -->
+    <div>
+      <header class="container-fluid navbar navbar-expand-xl fixed-top">
+         <a href="index.html" class="ps-3">
+            <img class="navbar-brand" src="imagens/Logo3.png" alt="">
+          </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+          <span class="navbar-toggler-icon fa fa-bars"></span>
+        </button> 
+       
+          <ul id="navbar" class="navbar-nav collapse navbar-collapse">
+            <li class="nav-item back-color-item px-2">
+              <a class="nav-link" href="animes.html">Animes</a>
+            </li>
+            <li class="nav-item back-color-item px-2">
+              <a class="nav-link" href="#">Categorias</a>
+            </li>
+            <li class="nav-item back-color-item px-2">
+              <a class="nav-link" href="#">Mais Assistidos</a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+              <li class="nav-item hoverl px-3">
+              <a class="fa-solid fa-magnifying-glass fa-2x" href="pesquisa.html"></a>
+            </li>
+  
+            <li class="nav-item px-3 d-flex align-items-center">
+                <a class="nav-link p-0" href="perfil.html" style="border: none;" title="Meu Perfil">
+                    <img src="imagens/icon test.jfif" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #ff730f;">
+                </a>
+            </li>
+            <li class="nav-item hoverl px-3 d-flex align-items-center">
+                <a class="fa-solid fa-right-from-bracket fa-2x" href="login.html" title="Sair" style="color: #dc3545; cursor: pointer; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#ff730f'" onmouseout="this.style.color='#dc3545'"></a>
+            </li>
+          </ul>
+        </header>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">Fullmetal Alchemist</h1>
+            <p class="hero-subtitle">Ação e Fantasia</p>
+            <a href="episodio.html" class="btn-continuar">Continuar | EP 15</a>
+            <p class="hero-episodes">64 episódios</p>
+        </div>
+    </div>
+
+    <!-- Conteúdo Central -->
+    <div class="action-bar">
+        
+        <div class="action-row">
+            <a href="#" class="fav-btn">
+                <i class="fa-regular fa-heart"></i> Adicionar aos Favoritos
+            </a>
+            
+            <div class="rating-box">
+                <div>
+                    <i class="fa-solid fa-star filled"></i>
+                    <i class="fa-solid fa-star filled"></i>
+                    <i class="fa-solid fa-star filled"></i>
+                    <i class="fa-solid fa-star filled"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Média de notas: 4.8 | 1250 avaliações</p>
+            </div>
+        </div>
+        
+        <p class="description">
+            Em Fullmetal Alchemist: Brotherhood, acompanhamos a jornada dos irmãos Edward e Alphonse Elric. Após uma tentativa desastrosa de realizar alquimia humana para ressuscitar a própria mãe, Edward perde uma perna e um braço, enquanto Alphonse perde todo o seu corpo, tendo a sua alma fixada numa armadura. Agora, eles buscam a lendária Pedra Filosofal para restaurarem seus corpos originais, descobrindo no caminho uma conspiração terrível que pode destruir todo o país de Amestris.
+        </p>
+        
+        <div class="divider"></div>
+        
+        <h2 class="episodes-title">Episódios</h2>
+        
+        <div class="ep-list lista">
+            <!-- Gerando 10 episódios para paginação -->
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 1</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">O Alquimista de Aço</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 2</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">O Dia do Início</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 3</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">A Cidade da Heresia</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 4</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">O Sofrimento de um Alquimista</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 5</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">Chuva de Tristeza</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 6</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">O Caminho da Esperança</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 7</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">A Verdade Escondida</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 8</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">O 5º Laboratório Central</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 9</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">Sentimentos Criados</p>
+            </a>
+            <a href="episodio.html" class="ep-item ep-anime">
+                <img src="imagens/ep1FULLMETALB.png" class="ep-img">
+                <span class="ep-number">EP 10</span>
+                <div class="ep-separator"></div>
+                <p class="ep-title">Destinos Separados</p>
+            </a>
+        </div>
+        
+        <div class="paginar d-flex gap-3" id="pagination">
+            <div class="first" style="cursor: pointer;"><i class="fa-solid fa-angles-left"></i></div>
+            <div class="prev" style="cursor: pointer;"><i class="fa-solid fa-angle-left"></i></div>
+            <div class="numeros d-flex gap-3">1</div>
+            <div class="next" style="cursor: pointer;"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="last" style="cursor: pointer;"><i class="fa-solid fa-angles-right"></i></div>
+        </div>
+    </div>
+    
+    <!-- Rodapé -->
+    <div class="margem-footer pt-5" id="footer">
+      <div class="borda-footer">
+        <footer class="row">
+          <ul class="col-6">
+            <li style="padding-top: 2.25rem;">
+              <a style="color: #b1b1b1; text-decoration: none;"> Animes </a>
+            </li>
+            <li class="footer-item">
+              <a style="color: #b1b1b1; text-decoration: none;"> Gêneros </a>
+            </li>
+            <li class="footer-item">
+              <a href="historico.html" style="color: #b1b1b1; text-decoration: none;"> Histórico </a>
+            </li>
+            <li class="footer-item">
+              <a href="favoritos.html" style="color: #b1b1b1; text-decoration: none;"> Favoritos </a>
+            </li>
+          </ul>
+
+          <ul class="col-6 justify-content-end" data-bs-toggle="modal" data-bs-target="#modalsobre" style="cursor:pointer;">
+            <li class="footer-item">
+              <i class="fa-solid fa-circle-info btn fa-xs" style="color: #b1b1b1"></i>
+            </li>
+            <li style="padding-top:2.25rem; padding-left: 0rem;" class="btn"><p style="color: #b1b1b1; margin: 0;">sobre</p></li>
+            <li class="ps-3" style="padding-top: 1.65rem;"><img class="icon-footer" src="imagens/icon-footer.png" alt=""></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="modal fade" id="modalsobre" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="background-color: rgb(8, 8, 8)">
+            <div class="modal-header border-0">
+              <h4 class="text-light">Sobre</h4>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <h5 class="text-light">Contato</h5>
+              <ul style="list-style-type: none; padding: 0;">
+                <li class="text-light">alisson.henriquedsn@gmail.com</li>
+                <li class="text-light">luisgu055789@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Lógica de Paginação de Episódios
+      const totalListaAr = document.querySelectorAll('.ep-anime');
+      const totalLista = Array.from(totalListaAr);
+
+      let porPag = 8; // Mostrar 8 por página
+
+      const state = {
+          page: 1,    
+          totalPage: Math.ceil(totalLista.length / porPag),
+          btnsVisi: 5
+      };
+
+      const html = {
+          get(element){
+              return document.querySelector(element);
+          }
+      };
+
+      const controls = {
+          next(){
+              state.page++;
+              if(state.page > state.totalPage){
+                 state.page--;
+              }
+          },
+          prev(){
+              state.page--;
+              if (state.page < 1) {
+                  state.page++;
+              }
+          },
+          goTo(page){
+              if (page < 1){
+                  page = 1;
+              }
+              if(page > state.totalPage){
+                  page = state.totalPage;
+              }
+              state.page = +page;
+          },
+          createListeners(){
+              html.get('.first').addEventListener('click', () => {
+                controls.goTo(1);  
+                 atualiza();
+              });
+              html.get('.last').addEventListener('click', () => {
+                controls.goTo(state.totalPage);  
+                 atualiza();
+              });
+              html.get('.next').addEventListener('click', () => {
+                  controls.next();
+                  atualiza();
+              });
+              html.get('.prev').addEventListener('click', () => {
+                  controls.prev();
+                  atualiza();
+              });
+          }
+      };
+
+      const lista = {
+          create(item){
+              html.get('.lista').appendChild(item);
+          },
+          update(){
+              html.get('.lista').innerHTML = '';
+              const page = state.page - 1;
+              let start = page * porPag;
+              let end = start + porPag;
+              let paginados = totalLista.slice(start, end);
+              
+              paginados.forEach(lista.create);
+          }
+      };
+
+      const btns = {
+          element: html.get('.paginar .numeros'),
+          create(numero){
+              const btn = document.createElement('div');
+              btn.innerHTML = numero;
+              btn.style.cursor = 'pointer';
+              btn.style.padding = '0 5px';
+              
+              if(state.page == numero){
+                btn.classList.add('num-ativo');
+                btn.style.fontWeight = 'bold';
+                btn.style.color = 'white';
+              } else {
+                btn.style.color = '#b1b1b1';
+              }
+              
+               btn.addEventListener('click', (event) => {
+                   const page = event.target.innerText;
+                   controls.goTo(page);
+                   atualiza();
+               });
+              
+              html.get('.paginar .numeros').appendChild(btn);
+          },
+          update(){
+              html.get('.paginar .numeros').innerHTML = "";
+              const {esquerda, direita} = btns.btnsVisi();
+              
+              for(let page = esquerda; page <= direita; page++){
+                  btns.create(page);
+              }
+          },
+          btnsVisi(){
+              const {btnsVisi} = state;
+              let esquerda = (state.page - Math.floor(btnsVisi / 2));
+              let direita = (state.page + Math.floor(btnsVisi / 2));
+                  
+              if(esquerda < 1){
+                  esquerda = 1;
+                  direita = btnsVisi;
+              }
+              
+              if (direita > state.totalPage){
+                  esquerda = state.totalPage - (btnsVisi - 1);
+                  direita = state.totalPage;
+                  if(esquerda < 1) esquerda = 1;
+              }
+              
+              return {esquerda, direita};
+          }
+      };
+
+      function atualiza(){
+           lista.update();
+           btns.update();
+      }
+
+      function init(){
+          atualiza();
+          controls.createListeners();
+      }
+
+      init();
+    </script>
+  </body>
+</html>

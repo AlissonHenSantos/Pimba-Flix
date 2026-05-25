@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="Latin1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pimba Animes - Catálogo</title>
+    <link rel="icon" href="imagens/icone" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/pimbaAnimes.css" media="screen" />
+    <link href="//db.onlinewebfonts.com/c/ecc8f49ca2217d594cec3e5f66a8b73a?family=CocoSharpL-Regular" rel="stylesheet" type="text/css"/>
+  </head>
+  <body class="fw-bold" style="font-family: sans-serif; background-image: url(imagens/background-image.png); box-shadow: inset 0px 4px 4px 1160px rgba(0, 0, 0, 0.75);">
+
+    <!-- Navbar -->
+    <div>
+      <header class="container-fluid navbar navbar-expand-xl fixed-top">
+         <a href="index.html" class="ps-3">
+            <img class="navbar-brand" src="imagens/Logo3.png" alt="">
+          </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+          <span class="navbar-toggler-icon fa fa-bars"></span>
+        </button> 
+       
+          <ul id="navbar" class="navbar-nav collapse navbar-collapse">
+            <li class="nav-item back-color-item px-2">
+              <a class="nav-link" href="animes.html">Animes</a>
+            </li>
+            <li class="nav-item back-color-item px-2">
+              <a class="nav-link" href="#">Categorias</a>
+            </li>
+            <li class="nav-item back-color-item px-2">
+              <a class="nav-link" href="#">Mais Assistidos</a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+              <li class="nav-item hoverl px-3">
+              <a class="fa-solid fa-magnifying-glass fa-2x" href="pesquisa.html"></a>
+            </li>
+  
+            <li class="nav-item px-3 d-flex align-items-center">
+                <a class="nav-link p-0" href="perfil.html" style="border: none;" title="Meu Perfil">
+                    <img src="imagens/icon test.jfif" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #ff730f;">
+                </a>
+            </li>
+            <li class="nav-item hoverl px-3 d-flex align-items-center">
+                <a class="fa-solid fa-right-from-bracket fa-2x" href="login.html" title="Sair" style="color: #dc3545; cursor: pointer; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#ff730f'" onmouseout="this.style.color='#dc3545'"></a>
+            </li>
+          </ul>
+        </header>
+    </div>
+
+    <!-- Estilos Específicos do Catálogo -->
+    <style>
+        .anime-item {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+            text-decoration: none !important;
+        }
+        .anime-item:hover {
+            transform: translateY(-5px);
+        }
+        .img-shadow {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+        .shadow-orange { box-shadow: -4px 4px 0px #ff730f; }
+        .shadow-blue { box-shadow: -4px 4px 0px #00a8ff; }
+        .shadow-yellow { box-shadow: -4px 4px 0px #ffc107; }
+        
+        .anime-title-mockup {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .top-bar-mockup {
+            color: #b1b1b1;
+            font-size: 1.1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+        .paginar .numeros div {
+            color: #b1b1b1;
+            transition: color 0.2s;
+        }
+        .paginar .numeros div:hover {
+            color: #fff !important;
+        }
+        .paginar .numeros .num-ativo {
+            color: #fff !important;
+        }
+        /* Footer Minimalista */
+        .minimal-footer {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+        .minimal-footer a {
+            color: #b1b1b1;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .minimal-footer a:hover {
+            color: #ff730f;
+        }
+    </style>
+
+    <!-- Conteúdo Principal -->
+    <div class="margem-lateral" style="padding-top: 7rem; padding-bottom: 2rem;">
+        
+        <div class="d-flex justify-content-between align-items-center top-bar-mockup">
+            <div style="cursor: pointer; font-weight: bold; color: #ccc;">
+                <i class="fa-solid fa-bars-staggered me-2"></i> Ordem alfabética
+            </div>
+            <div style="cursor: pointer; font-weight: bold; color: #ccc;">
+                Todos os animes <i class="fa-solid fa-caret-down ms-1"></i>
+            </div>
+        </div>
+        
+        <div id="pagination">
+            <div id="lista-anime" class="row row-cols-5 lista-anime gx-4 gy-5">
+                <!-- 25 Dummy Cards -->
+                <!-- Row 1 -->
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/DEMONSLAYER.png" alt="Demon Slayer">
+                    <p class="anime-title-mockup">Demon Slayer</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-yellow" src="imagens/BokuNoHero.png" alt="My Hero Academia">
+                    <p class="anime-title-mockup">My Hero Academia</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/DBZ.png" alt="Dragon Ball Z">
+                    <p class="anime-title-mockup">Dragon Ball Z</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/OP.png" alt="Attack on Titan (Proxy)">
+                    <p class="anime-title-mockup">Attack on Titan</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/HAIKYU.png" alt="Haikyuu!">
+                    <p class="anime-title-mockup">Haikyuu!</p>
+                  </a>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Castlevania.png" alt="Baki">
+                    <p class="anime-title-mockup">Baki: The Champion</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-blue" src="imagens/Bleach.png" alt="Bleach">
+                    <p class="anime-title-mockup">Bleach</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/FULLMETAL.png" alt="FMA">
+                    <p class="anime-title-mockup">Fullmetal Alchemist<br>Brotherhood</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/DBZ.png" alt="Fairy Tail">
+                    <p class="anime-title-mockup">Fairy Tail</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/FATE.png" alt="Fate">
+                    <p class="anime-title-mockup">Fate Stay Night:<br>Unlimited Blade Works</p>
+                  </a>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Jujutsu.png" alt="Jujutsu Kaisen">
+                    <p class="anime-title-mockup">Jujutsu Kaisen</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/BokuNoHero.png" alt="Jojo">
+                    <p class="anime-title-mockup">Jojo Bizarres<br>Adventures</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Spy.png" alt="Spy x Family">
+                    <p class="anime-title-mockup">Spy x Family</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Castlevania.png" alt="Overlord">
+                    <p class="anime-title-mockup">Overlord</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-blue" src="imagens/SAO.png" alt="SAO">
+                    <p class="anime-title-mockup">Sword Art Online</p>
+                  </a>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Castlevania.png" alt="Castlevania">
+                    <p class="anime-title-mockup">Castlevania</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/OP.png" alt="One Piece">
+                    <p class="anime-title-mockup">One Piece</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/OnePunchMan.png" alt="One Punch Man">
+                    <p class="anime-title-mockup">One Punch Man</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-blue" src="imagens/NARUTO.png" alt="Naruto">
+                    <p class="anime-title-mockup">Naruto</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/DEMONSLAYER.png" alt="Dororo">
+                    <p class="anime-title-mockup">Dororo</p>
+                  </a>
+                </div>
+
+                <!-- Page 2 items -->
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/FULLMETAL.png" alt="Death Note">
+                    <p class="anime-title-mockup">Death Note</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Jujutsu.png" alt="Hunter x Hunter">
+                    <p class="anime-title-mockup">Hunter x Hunter</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/Bleach.png" alt="Tokyo Ghoul">
+                    <p class="anime-title-mockup">Tokyo Ghoul</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-orange" src="imagens/FATE.png" alt="Black Clover">
+                    <p class="anime-title-mockup">Black Clover</p>
+                  </a>
+                </div>
+                <div class="col anime-item-container">
+                  <a href="anime.html" class="anime-item">
+                    <img class="img-shadow shadow-blue" src="imagens/SAO.png" alt="Evangelion">
+                    <p class="anime-title-mockup">Evangelion</p>
+                  </a>
+                </div>
+            </div>
+        </div>    
+            
+        <div class="paginar justify-content-end text-light mt-5" style="display: flex; gap: 15px; font-size: 1.2rem; font-weight: bold; align-items: center;">
+            <div class="first" style="cursor: pointer; display: none;">&lt;&lt;</div>
+            <div class="prev" style="cursor: pointer;"><i class="fa-solid fa-chevron-left"></i></div>
+            <div style="display: flex; gap: 15px;" class="numeros">1</div>
+            <div class="next" style="cursor: pointer;"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="last" style="cursor: pointer; display: none;">&gt;&gt;</div>
+        </div>
+
+        <!-- Rodapé Minimalista Integrado na Página -->
+        <div class="minimal-footer d-flex justify-content-between align-items-center">
+            <div>
+                <a href="animes.html">Animes</a>
+                <a href="#">Categorias</a>
+                <a href="historico.html">Histórico</a>
+                <a href="favoritos.html">Favoritos</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="#" style="margin: 0;"><i class="fa-regular fa-circle-info me-1"></i> Sobre</a>
+                <img src="imagens/icon-footer.png" alt="Logo" style="height: 30px;">
+            </div>
+        </div>
+    </div> 
+
+    <!-- Script Original Modificado -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      function openPerf() {
+          document.getElementById("mySidenav").style.width = "250px";
+      }
+      
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0px";
+      }
+
+      // Lógica de Paginação dos Animes
+      // Mudamos a classe alvo de .card para .anime-item-container para não conflitar
+      const listaAnimeAr = document.querySelectorAll('.anime-item-container');
+      const listaAnime = Array.from(listaAnimeAr);
+
+      let porPag = 20;
+
+      const state = {
+          page: 1,    
+          totalPage: Math.ceil(listaAnime.length / porPag),
+          btnsVisi: 5
+      };
+
+      const html = {
+          get(element){
+              return document.querySelector(element);
+          }
+      };
+
+      const controls = {
+          next(){
+              state.page++;
+              if(state.page > state.totalPage){
+                 state.page--;
+              }
+          },
+          prev(){
+              state.page--;
+              if (state.page < 1) {
+                  state.page++;
+              }
+          },
+          goTo(page){
+              if (page < 1){
+                  page = 1;
+              }
+              if(page > state.totalPage){
+                  page = state.totalPage;
+              }
+              state.page = +page;
+          },
+          createListeners(){
+              html.get('.first').addEventListener('click', () => {
+                controls.goTo(1);  
+                 atualiza();
+              });
+              html.get('.last').addEventListener('click', () => {
+                controls.goTo(state.totalPage);  
+                 atualiza();
+              });
+              html.get('.next').addEventListener('click', () => {
+                  controls.next();
+                  atualiza();
+              });
+              html.get('.prev').addEventListener('click', () => {
+                  controls.prev();
+                  atualiza();
+              });
+          }
+      };
+
+      const lista = {
+          create(item){
+              html.get('.lista-anime').appendChild(item);
+          },
+          update(){
+              html.get('.lista-anime').innerHTML = '';
+              const page = state.page - 1;
+              let start = page * porPag;
+              let end = start + porPag;
+              let paginados = listaAnime.slice(start, end);
+              
+              paginados.forEach(lista.create);
+          }
+      };
+
+      const btns = {
+          element: html.get('.paginar .numeros'),
+          create(numero){
+              const btn = document.createElement('div');
+              btn.innerHTML = numero;
+              btn.style.cursor = 'pointer';
+              btn.style.padding = '0 5px';
+              
+              if(state.page == numero){
+                btn.classList.add('num-ativo');
+                btn.style.fontWeight = 'bold';
+                btn.style.color = 'white';
+              } else {
+                btn.style.color = '#b1b1b1';
+              }
+              
+               btn.addEventListener('click', (event) => {
+                   const page = event.target.innerText;
+                   controls.goTo(page);
+                   atualiza();
+               });
+              
+              html.get('.paginar .numeros').appendChild(btn);
+          },
+          update(){
+              html.get('.paginar .numeros').innerHTML = "";
+              const {esquerda, direita} = btns.btnsVisi();
+              
+              for(let page = esquerda; page <= direita; page++){
+                  btns.create(page);
+              }
+          },
+          btnsVisi(){
+              const {btnsVisi} = state;
+              let esquerda = (state.page - Math.floor(btnsVisi / 2));
+              let direita = (state.page + Math.floor(btnsVisi / 2));
+                  
+              if(esquerda < 1){
+                  esquerda = 1;
+                  direita = btnsVisi;
+              }
+              
+              if (direita > state.totalPage){
+                  esquerda = state.totalPage - (btnsVisi - 1);
+                  direita = state.totalPage;
+                  if(esquerda < 1) esquerda = 1;
+              }
+              
+              return {esquerda, direita};
+          }
+      };
+
+      function atualiza(){
+           lista.update();
+           btns.update();
+      }
+
+      function init(){
+          atualiza();
+          controls.createListeners();
+      }
+
+      init();
+    </script>
+  </body>
+</html>

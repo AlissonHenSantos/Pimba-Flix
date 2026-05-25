@@ -1,0 +1,90 @@
+.titulo-ep-page-ep-anime{
+font-family: 'Asap';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 37px;
+display: flex;
+align-items: center;
+color: #FFFFFF;
+}
+
+
+.titulo-page-ep-anime{
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 44px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FF730C;
+}
+
+
+.data-lan{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(177, 177, 176, 0.7);
+
+}
+
+
+
+.proximo{
+    font-family: 'Nunito';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 44px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.img-proximo{
+    filter: drop-shadow(4px 4px 1px rgba(255, 118, 0, 0.78));
+}
+
+
+.proximo-titulo{
+        font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+letter-spacing: 0.135em;
+
+color: #B1B1B0;
+}
+
+.btn-todos-eps{
+    background: #FF730C;
+    border-radius: 12px; 
+    font-family: 'Asap';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+text-align: center;
+
+color: #000000;
+margin-top: 0.75rem;
+    margin-left: 6rem;
+}
+
+.todos-eps{
+    
+}

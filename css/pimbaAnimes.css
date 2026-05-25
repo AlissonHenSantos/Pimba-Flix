@@ -1,0 +1,739 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,500&family=Inter&family=Nunito:wght@500;600;700&display=swap');
+
+.sidenav {
+ 
+  width: 0; 
+  position: fixed; 
+
+  left: 82%;
+  background-color: #111; 
+  overflow-x: hidden; 
+
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 100;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+.coracap:hover{
+    
+        content: url(../imagens/coracao-preenchido.png)
+}
+
+/* Form Styles */
+.crie-sua-conta-box {
+    max-width: 600px;
+    margin: 0 auto; 
+    background: rgba(10, 10, 10, 0.85); 
+    border: 1px solid #FF730C; 
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(255, 115, 12, 0.2);
+    padding-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.bem-vindo-crie-sua-conta {
+    border-bottom: 1px solid rgba(255, 115, 12, 0.3);
+}
+
+.bem-vindo {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+.crie-sua-conta {
+    padding: 3rem 2rem;
+}
+
+.crie-sua-conta h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.crie-sua-conta-item {
+    margin-bottom: 1.5rem;
+    padding: 0 1rem !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.crie-sua-conta-item label {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+    font-weight: 600;
+    text-align: left;
+}
+
+.crie-sua-conta-input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #FF730C;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%; 
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.crie-sua-conta-input:focus {
+    box-shadow: 0 0 10px rgba(255, 115, 12, 0.5);
+}
+
+.btn-criar-conta {
+    padding: 0 !important;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.criar-conta {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    color: #fff;
+    background: #FF730C;
+    padding: 0.75rem 3rem !important;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.criar-conta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 115, 12, 0.4);
+}
+
+.form-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.form-link:hover {
+    color: #FF730C;
+    text-decoration: underline;
+}
+
+
+.ep-anime{
+    
+border-bottom:  1px solid #b1b1b1;
+transform: rotate(0.05deg);
+}
+
+
+.paginar div{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.paginar{
+    
+    color: #b1b1b1;
+    cursor: pointer;
+    
+    
+}
+
+.num-ativo{
+    color: #FF730C;
+}
+
+
+.paginar{
+    display: flex; justify-content: end;
+}
+
+num-ativo{
+    color:#FF730C;
+}
+
+.lista-estrela{
+    padding-left: 8rem;
+}
+
+.estrela{
+    margin-right: 0.5rem;
+    margin-top: 1.5rem;
+    width: 3rem;
+    cursor: pointer;
+    
+}
+
+.user-anime{
+    display: flex;
+}
+
+.adici-fav{
+    color: #b1b1b1;
+}
+
+
+.favorito{
+    display: flex;
+    margin-top: 2rem;
+}
+.coracao{
+    Width :45px;
+    Height: 39px;
+    padding-right: 0.5rem;
+    cursor: pointer;
+}
+
+.paginacao-item{
+    color: #b1b1b1;
+    cursor: pointer;
+}
+.paginacao-item:hover{
+    color: #fff;
+}
+
+
+.link-ep{
+    
+    display: flex;
+    color: #fff;
+}
+.link-ep:hover{
+    color: #fff;
+}
+
+.titulo-ep{
+font-family: 'Asap';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 28px;
+text-align: justify;
+letter-spacing: 0.135em;
+color: #b1b1b1;
+
+}
+
+.num-ep{
+ font-family: 'Asap';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 28px;
+text-align: justify;
+border-right: solid 1px #b1b1b1 ;
+color: #b1b1b1;
+}
+
+.item-lista-ep{
+    display: flex;
+    border-bottom: solid 1px #b1b1b1;
+}
+
+.img-lista-ep{
+
+    width: 8rem ;
+    border: 1px solid #000;
+    filter: drop-shadow(4px 4px 1px rgba(255, 118, 0, 0.78));
+    transform: rotate(0.15deg);
+}
+
+
+.episodios{
+    border-top: solid 1px #FF730C;
+    margin-top: 3rem;
+}
+
+.generos:hover{
+    text-decoration: underline;
+}
+
+.num-episodios{
+    position: absolute;
+width: 270px;
+height: 33px;
+left: 155px;
+top: 483px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+}
+
+
+
+.btn-assistir{
+    position: absolute;
+width: 272px;
+height: 62px;
+left: 145px;
+top: 413px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+line-height: 34px;
+display: flex;
+align-items: center;
+text-align: center;
+    
+    background-color: #FF730C;
+    color: #fff;
+    border-radius: 23px;
+    font-family: 'Inter';
+    font-weight: 700;
+}
+
+.btn-assistir:hover{
+    color: #fff;
+}
+
+
+
+.footer-ul-2{
+    justify-content: flex-end;
+}
+
+
+
+ .icon-footer{
+     height: 44px;
+     width: 4.56rem;
+ }
+
+.footer-item{
+    padding-left: 5.68rem;
+    padding-top: 2.25rem;
+}
+
+
+
+.titulo-ep{
+    float: right;
+    padding: 1.6rem;
+}
+.episodeo-anime{
+    float: left;
+
+}
+
+
+
+.borda-episodeos{
+    border: 1px solid #FF730C;
+}
+
+.titulo-anime{
+    position: absolute;
+width: 664px;
+height: 160px;
+left: 130px;
+top: 256px;
+    
+    font-family: "Asap";
+    position: absolute;
+    font-family: 'Asap';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 6vw;
+    line-height: 92px;  
+    
+    color: #fff;
+}
+
+.genero-anime{
+    position: absolute;
+width: 13.18rem;
+height: 2rem;
+left: 8.6875rem;
+top: 19.5rem;;
+font-style: normal;
+font-weight: 25rem;
+font-size: 1.5rem;
+line-height: 1.75rem;
+color: #fff;
+}
+
+
+
+body{
+    background-image: url(../imagens/background.png); 
+    background-size:  cover;
+    box-shadow: inset 0px 4px 4px 1160px rgba(0, 0, 0, 0.65);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.borda-footer{
+ border-top:  solid #7b7b81 0.125rem;
+ margin-top: auto;
+}
+.borda-home-page{
+    border-top: solid #ff730c 0.312rem;
+}
+
+
+
+.navbar{
+   background: linear-gradient(90deg, #021718 0%, #000000 100%);
+   box-shadow: inset 0px 4px 4px 1160px rgba(0, 0, 0, 0.40);
+
+}
+
+
+
+.nav-link{
+    color: #b1b1b1;
+    font-weight: 600;
+    font-size: 25px;
+    font-family: "Asap";
+    font-style: normal;
+    letter-spacing: 0.07rem;
+   
+    
+}
+.nav-item a:hover{
+   
+    color: #fff
+        
+}
+
+.nav-item a:focus{
+   color: #b1b1b1;
+}
+
+.navbar-brand{
+    height: 53px;
+    width: 227px;
+    margin-right: 3rem;
+}
+.menu{
+    color: chocolate;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: auto;
+    margin-top: 0.125rem;
+    right: -15%;
+    
+}
+
+.dropdown-menu{
+    background-color: rgb(8, 8, 8);
+    color: #b1b1b1;
+    left: auto;
+    right: 0%;
+
+}
+
+.dropdown-item{
+    color: #b1b1b1;
+}
+
+
+.fa-magnifying-glass{
+    color: #b1b1b1;
+    text-decoration: none;
+    padding: 0.5rem;
+    
+}
+.navbar-toggler-icon{
+    color: chocolate;
+    position: relative;
+}
+
+.search-input-wrapper{
+    border-bottom: 0.125rem solid #59595b;
+    display: flex;
+    margin: 0 auto;
+    max-width: 55rem;
+    transition: border-color .2s cubic-bezier(.5,0,.25,1);
+}
+
+.barra-de-pesquisa{
+    text-rendering: optimizeLegibility;
+    background-color: #121314;
+    border: none;
+    color: #fff;
+    display: block;
+    flex: 1 1 auto;
+    font-family: Lato,Helvetica Neue,helvetica,sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    padding-bottom: 0.25rem;
+    padding-top: 0;
+    width: 100%;
+}
+
+
+
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+
+.fa-user-circle{
+    color: #b1b1b1;
+    text-decoration: none;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+.icones{
+    display: flex;
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+}
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+
+.menu-usuario{
+    padding-top: 0.75rem; 
+    border-bottom: 1px;
+    border-bottom: #b1b1b1;
+}   
+
+.item-menu-usuario{
+    display: flex;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 1rem;
+   
+    
+}
+.itens-menu{
+    border-top: 0.125rem solid #b1b1b1;
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+}
+
+
+h4{
+    font-size: 1rem;
+}
+
+.hoverl a:hover{
+    color: chocolate;
+}
+.barra-item{
+    display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+ul{
+    display: flex;
+}
+
+.carousel-imagem{
+
+    height: 22.5rem;
+    width: 100%;
+}
+.navbar{
+    height: 4.7rem;
+}
+.carousel-indicators [data-bs-target]{
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    border: 3px solid #000;
+    
+
+}
+
+.margem-lateral{
+    padding-left: 8.125rem;
+    padding-right: 8.125rem;
+}
+
+.lancamentos{
+    padding-bottom: 2,125rem;
+    font-family: "Asap";
+    font-weight: 600;
+}
+.card{
+    border: none;
+    background-color: transparent !important;
+    transition: transform 0.2s ease;
+}
+
+.card-x-y{
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.card-img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-text{
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-body{
+    padding: 0;
+    display: block;
+}
+
+a{
+    text-decoration: none;
+}
+
+.bg-laranja{
+    background-color: #ff730c;
+}
+
+.card:hover{
+    transform: translateY(-8px);
+}
+.card:hover .card-img {
+    border-color: #ff730c;
+    box-shadow: 0 8px 20px rgba(255, 115, 12, 0.4);
+}
+
+.carousel{
+    padding-top: 4.75rem;
+}
+
+
+.img-fluid{
+    border-radius: 1rem;
+}
+
+.navbar-nav{
+    background-color: transparent;
+    position: relative;
+}
+
+.alinhamento-info{
+    right: 100%;
+}
+
+li {
+    list-style-type: none;
+  }
+
+.margem-footer{
+    padding-left: 8.125rem;
+    padding-right: 8.125rem;
+    margin-top: auto !important;
+    width: 100%;
+}
+
+.close{
+    border: 0rem;
+    color: #b1b1b1;
+    background-color: rgb(8, 8, 8);
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #ff730c;
+}
+
+/* removed redundant hover background color override */
+
+imagem-anime{
+    border-radius: 2% ;
+}
+
+.anime-informacoes{
+    position: absolute;
+    width: 561px;
+    height: 651px;
+    left: calc(50% - 561px/2 - 439.5px);
+    top: calc(50% - 651px/2 - 799.5px);
+
+    background-color: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.85) 100%);
+    backdrop-filter: blur(10px);
+}
+
+.anime-informacoes-titulo{
+    position: absolute;
+width: 620px;
+height: 160px;
+left: 130px;
+top: 256px;
+}
+
+.btn-continuar{
+color: #fff;
+ border-radius: 2%;
+}
+
+.anime-informacoes-generos{
+    position: absolute;
+width: 211px;
+height: 32px;
+left: 139px;
+top: 348px;
+
+font-family: 'Asap';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 28px;
+}
+
+
+
+
+
