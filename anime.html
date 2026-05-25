@@ -226,6 +226,21 @@
         .paginar .num-ativo {
             color: #fff !important;
         }
+
+        /* Premium Lock */
+        .premium-lock {
+            margin-left: auto;
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        .ep-premium {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        .ep-premium:hover {
+            opacity: 1;
+        }
     </style>
   </head>
   <body class="fw-bold" style="font-family: sans-serif;">
@@ -357,17 +372,19 @@
                 <div class="ep-separator"></div>
                 <p class="ep-title">O 5º Laboratório Central</p>
             </a>
-            <a href="episodio.html" class="ep-item ep-anime">
+            <a href="#" class="ep-item ep-anime ep-premium">
                 <img src="imagens/ep1FULLMETALB.png" class="ep-img">
                 <span class="ep-number">EP 9</span>
                 <div class="ep-separator"></div>
                 <p class="ep-title">Sentimentos Criados</p>
+                <i class="fa-solid fa-lock premium-lock"></i>
             </a>
-            <a href="episodio.html" class="ep-item ep-anime">
+            <a href="#" class="ep-item ep-anime ep-premium">
                 <img src="imagens/ep1FULLMETALB.png" class="ep-img">
                 <span class="ep-number">EP 10</span>
                 <div class="ep-separator"></div>
                 <p class="ep-title">Destinos Separados</p>
+                <i class="fa-solid fa-lock premium-lock"></i>
             </a>
         </div>
         
@@ -421,6 +438,24 @@
                 <li class="text-light">alisson.henriquedsn@gmail.com</li>
                 <li class="text-light">luisgu055789@gmail.com</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Sem Permissão / Premium -->
+      <div class="modal fade" id="modalPremium" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="background-color: #1a1a1a; border: 1px solid #ff730f;">
+            <div class="modal-header border-0">
+              <h4 class="text-light m-0"><i class="fa-solid fa-crown" style="color: #ffc107;"></i> Acesso Negado</h4>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+              <i class="fa-solid fa-lock mb-3" style="font-size: 3rem; color: #ff730f;"></i>
+              <h5 class="text-light">Conteúdo Exclusivo Premium</h5>
+              <p style="color: #aaa;">Você precisa de uma assinatura Pimba Premium para assistir a este episódio.</p>
+              <button class="btn mt-3" style="background-color: #ff730f; color: white; border-radius: 25px; font-weight: bold; padding: 10px 30px;" data-bs-dismiss="modal">Assinar Agora</button>
             </div>
           </div>
         </div>
@@ -564,6 +599,17 @@
       function init(){
           atualiza();
           controls.createListeners();
+          
+          // Lógica de Simulação de Sem Permissão
+          const premiumEps = document.querySelectorAll('.ep-premium');
+          const premiumModal = new bootstrap.Modal(document.getElementById('modalPremium'));
+
+          premiumEps.forEach(ep => {
+              ep.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  premiumModal.show();
+              });
+          });
       }
 
       init();

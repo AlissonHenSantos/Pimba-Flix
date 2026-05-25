@@ -12,6 +12,44 @@
     <link rel="stylesheet" href="css/pimbaAnimes.css">
     <link rel="stylesheet" href="css/login.css">
     <link href="//db.onlinewebfonts.com/c/ecc8f49ca2217d594cec3e5f66a8b73a?family=CocoSharpL-Regular" rel="stylesheet" type="text/css"/>
+
+    <!-- Validation & Success Styles -->
+    <style>
+        .error-msg {
+            color: #ff3333;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+            font-weight: normal;
+        }
+        .input-error {
+            border: 2px solid #ff3333 !important;
+            background-color: rgba(255, 51, 51, 0.1) !important;
+        }
+        .success-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .success-overlay i {
+            font-size: 5rem;
+            color: #28a745;
+            margin-bottom: 20px;
+            animation: popIn 0.5s ease-out;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body class="fw-bold" style="font-family: sans-serif; background-image: url(imagens/back-login.png); box-shadow: inset 0px 4px 4px 1160px rgba(0, 0, 0, 0.75);">
 
@@ -64,35 +102,41 @@
             <div class="crie-sua-conta">
                 <h1 class="text-center" style="color: #ff730f;">Crie sua conta</h1>
 
-                <!-- Direciona para index.html para simular criação de conta concluída -->
-                <form method="get" action="index.html">
+                <!-- Formulário com validação via JS -->
+                <form id="registroForm" novalidate>
                     <div class="crie-sua-conta-item p-1 ps-5">
                         <label>Nome:</label>
-                        <input name="nome" class="crie-sua-conta-input" type="text" required>
+                        <input id="fNome" name="nome" class="crie-sua-conta-input" type="text" required>
+                        <div class="error-msg" id="errNome">Por favor, insira seu nome completo.</div>
                     </div>
                     <div class="crie-sua-conta-item p-1 ps-5">
                         <label>Telefone:</label>
-                        <input name="telefone" class="crie-sua-conta-input" type="tel" required>
+                        <input id="fTelefone" name="telefone" class="crie-sua-conta-input" type="tel" required>
+                        <div class="error-msg" id="errTelefone">Por favor, insira um telefone válido.</div>
                     </div>
                     <div class="crie-sua-conta-item p-1 ps-5">
                         <label>Email:</label>
-                        <input name="email" class="crie-sua-conta-input" type="email" required>
+                        <input id="fEmail" name="email" class="crie-sua-conta-input" type="email" required>
+                        <div class="error-msg" id="errEmail">Por favor, insira um e-mail válido.</div>
                     </div>
                     <div class="crie-sua-conta-item p-1 ps-5">
                         <label>Nome do Perfil:</label>
-                        <input name="perfilName" class="crie-sua-conta-input" type="text" required>
+                        <input id="fPerfil" name="perfilName" class="crie-sua-conta-input" type="text" required>
+                        <div class="error-msg" id="errPerfil">Por favor, defina o nome do perfil.</div>
                     </div>
                     <div class="crie-sua-conta-item p-1 ps-5">
                         <label>Senha:</label>
                         <input id="senha" name="senha" class="crie-sua-conta-input" type="password" required>
+                        <div class="error-msg" id="errSenha">A senha deve ter pelo menos 6 caracteres.</div>
                     </div>
                     <div class="crie-sua-conta-item p-1 ps-5">
                         <label>Confirme a senha:</label>
                         <input id="confirmar-senha" class="crie-sua-conta-input" type="password" required>
+                        <div class="error-msg" id="errConfirma">As senhas não coincidem.</div>
                     </div>
 
                     <div class="btn-criar-conta pt-4 pb-4">
-                        <input class="criar-conta px-4" type="submit" value="CRIAR CONTA" name="Cadastrar">
+                        <button type="button" id="btnSubmit" class="criar-conta px-4 text-light fw-bold" style="background-color:#ff730f; border:none; border-radius:8px; padding:10px; cursor:pointer;">CRIAR CONTA</button>
                     </div>
                     <a href="login.html" class="form-link">Já tem uma conta? Entre</a>
                 </form>
@@ -100,21 +144,59 @@
         </div>
     </div>
 
-    <!-- Script de validação de senha -->
+    <!-- Overlay de Sucesso -->
+    <div id="successOverlay" class="success-overlay">
+        <i class="fa-solid fa-circle-check"></i>
+        <h2 class="fw-bold">Conta criada com sucesso!</h2>
+        <p>Redirecionando...</p>
+    </div>
+
+    <!-- Script de validação de formulário -->
     <script>
-        var password = document.getElementById("senha"),
-            confirm_password = document.getElementById("confirmar-senha");
+        const btnSubmit = document.getElementById('btnSubmit');
+        
+        const fields = [
+            { id: 'fNome', errId: 'errNome', validate: val => val.trim().length > 0 },
+            { id: 'fTelefone', errId: 'errTelefone', validate: val => val.trim().length >= 8 },
+            { id: 'fEmail', errId: 'errEmail', validate: val => /\S+@\S+\.\S+/.test(val) },
+            { id: 'fPerfil', errId: 'errPerfil', validate: val => val.trim().length > 0 },
+            { id: 'senha', errId: 'errSenha', validate: val => val.length >= 6 },
+            { id: 'confirmar-senha', errId: 'errConfirma', validate: val => val === document.getElementById('senha').value && val.length >= 6 }
+        ];
 
-        function validatePassword(){
-            if(password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("Senhas diferentes!");
-            } else {
-                confirm_password.setCustomValidity('');
+        btnSubmit.addEventListener('click', () => {
+            let isValid = true;
+
+            fields.forEach(f => {
+                const input = document.getElementById(f.id);
+                const errMsg = document.getElementById(f.errId);
+                
+                if (!f.validate(input.value)) {
+                    input.classList.add('input-error');
+                    errMsg.style.display = 'block';
+                    isValid = false;
+                } else {
+                    input.classList.remove('input-error');
+                    errMsg.style.display = 'none';
+                }
+            });
+
+            if (isValid) {
+                // Mostra overlay de sucesso e redireciona
+                document.getElementById('successOverlay').style.display = 'flex';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
             }
-        }
-
-        password.onchange = validatePassword;
-        confirm_password.onkeyup = validatePassword;
+        });
+        
+        // Remove erro visual ao digitar
+        fields.forEach(f => {
+            document.getElementById(f.id).addEventListener('input', function() {
+                this.classList.remove('input-error');
+                document.getElementById(f.errId).style.display = 'none';
+            });
+        });
     </script>
 
     <!-- Rodapé -->

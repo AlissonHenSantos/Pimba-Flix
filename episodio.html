@@ -56,10 +56,23 @@
 
     <!-- Video e Conteúdo -->
     <div style="padding-top: 4.75rem;">
-        <video controls style="width: 100%; max-height: 70vh; background-color: #000;">
-            <source src="videos/ep1FULLMETAL.mp4">
-            Seu navegador não suporta a tag de vídeo.
-        </video>
+        <div style="position: relative; width: 100%; background-color: #000; min-height: 40vh;">
+            <!-- Botão para simular erro -->
+            <button id="toggleErrorBtn" class="btn btn-sm btn-outline-danger" style="position: absolute; top: 15px; right: 20px; z-index: 10; font-weight: bold;">Simular Erro de Vídeo</button>
+
+            <video id="animeVideo" controls style="width: 100%; max-height: 70vh; display: block;">
+                <source src="videos/ep1FULLMETAL.mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+
+            <!-- Overlay de Erro -->
+            <div id="videoErrorOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(17, 17, 17, 0.95); color: white; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 5;">
+                <i class="fa-solid fa-triangle-exclamation mb-3" style="font-size: 4rem; color: #dc3545;"></i>
+                <h3 class="mb-2">Erro na reprodução</h3>
+                <p style="color: #aaa;">Não foi possível carregar o vídeo. Tente novamente mais tarde.</p>
+                <button class="btn mt-3" style="background-color: #ff730f; color: white; border-radius: 25px; font-weight: bold; padding: 8px 25px;" onclick="window.location.reload()">Tentar Novamente</button>
+            </div>
+        </div>
     </div>
     
     <div class="margem-lateral justify-content-between pt-4" style="display: flex; flex-wrap: wrap;">
@@ -152,6 +165,28 @@
       function closeNav() {
           document.getElementById("mySidenav").style.width = "0px";
       }
+
+      // Lógica de Simulação de Erro de Vídeo
+      const toggleErrorBtn = document.getElementById('toggleErrorBtn');
+      const animeVideo = document.getElementById('animeVideo');
+      const videoErrorOverlay = document.getElementById('videoErrorOverlay');
+      
+      let isError = false;
+
+      toggleErrorBtn.addEventListener('click', () => {
+          isError = !isError;
+          if (isError) {
+              animeVideo.style.opacity = '0';
+              videoErrorOverlay.style.display = 'flex';
+              toggleErrorBtn.textContent = 'Remover Erro';
+              toggleErrorBtn.classList.replace('btn-outline-danger', 'btn-danger');
+          } else {
+              animeVideo.style.opacity = '1';
+              videoErrorOverlay.style.display = 'none';
+              toggleErrorBtn.textContent = 'Simular Erro de Vídeo';
+              toggleErrorBtn.classList.replace('btn-danger', 'btn-outline-danger');
+          }
+      });
     </script>
 </body>
 </html>

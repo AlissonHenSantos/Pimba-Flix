@@ -117,6 +117,26 @@
         .minimal-footer a:hover {
             color: #ff730f;
         }
+        /* Skeleton Animation */
+        @keyframes skeleton-loading {
+            0% { background-color: #2a2a2a; }
+            50% { background-color: #3d3d3d; }
+            100% { background-color: #2a2a2a; }
+        }
+        .skeleton-img {
+            width: 100%;
+            aspect-ratio: 2/3;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            animation: skeleton-loading 1.2s infinite ease-in-out;
+        }
+        .skeleton-text {
+            width: 80%;
+            height: 18px;
+            border-radius: 4px;
+            margin: 0 auto;
+            animation: skeleton-loading 1.2s infinite ease-in-out;
+        }
     </style>
 
     <!-- Conteúdo Principal -->
@@ -396,13 +416,33 @@
               html.get('.lista-anime').appendChild(item);
           },
           update(){
-              html.get('.lista-anime').innerHTML = '';
-              const page = state.page - 1;
-              let start = page * porPag;
-              let end = start + porPag;
-              let paginados = listaAnime.slice(start, end);
+              const container = html.get('.lista-anime');
+              container.innerHTML = '';
               
-              paginados.forEach(lista.create);
+              // Skeleton Loading Simulação
+              for(let i = 0; i < porPag; i++) {
+                  const skeleton = document.createElement('div');
+                  skeleton.className = 'col anime-item-container skeleton-box';
+                  skeleton.innerHTML = `
+                      <div class="anime-item" style="cursor: default; transform: none;">
+                          <div class="skeleton-img"></div>
+                          <div class="skeleton-text"></div>
+                      </div>
+                  `;
+                  container.appendChild(skeleton);
+              }
+
+              // Simula atraso da rede (1.2s)
+              setTimeout(() => {
+                  // Limpar Skeletons se não houver troca de página concorrente
+                  container.innerHTML = '';
+                  const page = state.page - 1;
+                  let start = page * porPag;
+                  let end = start + porPag;
+                  let paginados = listaAnime.slice(start, end);
+                  
+                  paginados.forEach(lista.create);
+              }, 1200);
           }
       };
 

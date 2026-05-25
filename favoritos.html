@@ -55,8 +55,13 @@
 
     <!-- Conteúdo Favoritos -->
     <div class="margem-lateral" style="margin-top: 150px; min-height: 50vh;">
-        <h1 class="text-light mb-5">Meus Favoritos</h1>
-        <div class="row pt-3">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h1 class="text-light m-0">Meus Favoritos</h1>
+            <button id="toggleStateBtn" class="btn btn-outline-warning" style="border-color: #ff730f; color: #ff730f;">Simular Lista Vazia</button>
+        </div>
+        
+        <!-- Estado Preenchido -->
+        <div id="filledState" class="row pt-3">
             <!-- Item 1 -->
             <div class="card col-6 col-md-4 col-lg-3 col-xl-2 card-x-y">
                 <a href="anime.html">
@@ -102,6 +107,14 @@
                     </div>
                 </a>
             </div>
+        </div>
+
+        <!-- Estado Vazio -->
+        <div id="emptyState" class="text-center" style="display: none; padding: 4rem 0;">
+            <i class="fa-regular fa-heart-crack mb-4" style="font-size: 5rem; color: #ff730f; opacity: 0.8;"></i>
+            <h2 class="text-light mb-3">Você ainda não tem favoritos</h2>
+            <p style="color: #b1b1b1; font-size: 1.1rem;">Explore nosso catálogo e salve seus animes preferidos para assistir mais tarde.</p>
+            <a href="animes.html" class="btn mt-4" style="background-color: #ff730f; color: white; padding: 10px 30px; font-weight: bold; border-radius: 25px;">Explorar Animes</a>
         </div>
     </div>
 
@@ -161,6 +174,30 @@
       function closeNav() {
           document.getElementById("mySidenav").style.width = "0px";
       }
+
+      // Lógica para simular Empty State
+      const toggleBtn = document.getElementById('toggleStateBtn');
+      const filledState = document.getElementById('filledState');
+      const emptyState = document.getElementById('emptyState');
+      
+      let isEmpty = false;
+
+      toggleBtn.addEventListener('click', () => {
+          isEmpty = !isEmpty;
+          if (isEmpty) {
+              filledState.style.display = 'none';
+              emptyState.style.display = 'block';
+              toggleBtn.textContent = 'Simular Lista Preenchida';
+              toggleBtn.classList.replace('btn-outline-warning', 'btn-warning');
+              toggleBtn.style.color = '#000';
+          } else {
+              filledState.style.display = 'flex'; // Usando flex por causa de 'row' do bootstrap
+              emptyState.style.display = 'none';
+              toggleBtn.textContent = 'Simular Lista Vazia';
+              toggleBtn.classList.replace('btn-warning', 'btn-outline-warning');
+              toggleBtn.style.color = '#ff730f';
+          }
+      });
     </script>
 </body>
 </html>
